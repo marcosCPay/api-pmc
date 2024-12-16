@@ -16,5 +16,8 @@ use Illuminate\Support\Facades\Route;
     
 //});
 
+    require __DIR__ . '/api/DocumentRoutes.php';
 
-require __DIR__ . '/api/DocumentRoutes.php';
+
+
+

@@ -12,9 +12,5 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     // Custom method to return JSON responses
-    /*protected function jsonResponse($data, $status = 200)
-    {
-        return response()->json($data, $status)
-                         ->header('Accept', 'application/json');
-    }*/
+    
 }

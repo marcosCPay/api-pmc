@@ -21,14 +21,16 @@ class DocumentRepository
     public function downloadDocumentByPath(string $path)
     {
         // Check if the file exists
-        if (!Storage::disk('local')->exists($path)) {
+        if (!Storage::disk('custom')->exists($path)) {
             throw new \Exception('File not found.');
         }
         $path = preg_replace('/[\x{200E}\x{200F}]/u', '', $path);
         // Get the file's content and its MIME type
-        $fileContent = Storage::disk('local')->get($path);
-        $mimeType = Storage::disk('local')->mimeType($path);
+        $absolutePath=Storage::disk('custom')->path($path);
+        $fileContent = Storage::disk('custom')->get($path);
+        $mimeType = Storage::disk('custom')->mimeType($path);
         $fileName = basename($path);
+
 
         // Ensure that the content is not base64-encoded, just raw binary data
         if (base64_encode(base64_decode($fileContent, true)) === $fileContent) {
@@ -40,6 +42,7 @@ class DocumentRepository
             'content' => $fileContent,
             'mime_type' => $mimeType,
             'file_name' => $fileName,
+            'path'=>$absolutePath
         ];
 
     }

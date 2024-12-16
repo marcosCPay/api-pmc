@@ -58,7 +58,8 @@ return [
 
         'custom' => [
             'driver' => 'local',
-            'root' => 'C:\\Users\\marcos\\Downloads',  // Ruta personalizada
+            'root' => storage_path('app/documents'),
+            'throw' => false,
         ],
 
     ],

@@ -49,7 +49,7 @@ class DocumentController extends Controller
             // Return the file content as a downloadable response
             // Return the file content as a downloadable response
             return response()->download(
-                storage_path('app/documents'.$path),  // This should be the full file path
+                $fileData['path'],  // This should be the full file path
                 $fileData['file_name'], // File name to be used for the download
                 [
                     'Content-Type' => $fileData['mime_type'],  // MIME type for the file
